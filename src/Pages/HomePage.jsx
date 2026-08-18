@@ -1,18 +1,3 @@
-// import Navbar from "../Components/Navbar";
-// import Footer from "../Components/Footer";
-
-// const Homepage = () => {
-//   return (
-//     <div className="flex min-h-screen flex-col">
-//       <Navbar />
-//       <main className="flex min-h-[100vh] flex-1 bg-background"></main>
-//       <Footer />
-//     </div>
-//   );
-// };
-// export default Homepage;
-
-// MUI Icons
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined";
@@ -20,7 +5,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
-import homeBanner from "../assets/images/home_banner.png";
+import homeBanner from "../assets/images/compressed_home_banner.png";
 import Products from "../Components/Products";
 
 const HomePage = () => {

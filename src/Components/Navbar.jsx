@@ -11,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
-import logo from "../assets/images/rhs_logo.png";
+import logo from "../assets/images/compressed_rhs_logo.png";
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = React.useState(false);
