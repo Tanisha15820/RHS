@@ -20,7 +20,7 @@ const Navbar = () => {
     <header className="w-full bg-background px-3 py-4 md:px-5">
       {/* Navbar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-2xl bg-white px-4 py-3 shadow-[0_6px_30px_rgba(37,37,184,0.1)] ring-1 ring-primary/10 md:px-6">
-        {/* ================= LOGO ================= */}
+        {/*  LOGO  */}
         <a href="/" className="flex items-center gap-3">
           {/* Logo Image */}
           <img
@@ -41,7 +41,7 @@ const Navbar = () => {
           </div>
         </a>
 
-        {/* ================= DESKTOP MENU ================= */}
+        {/*  DESKTOP MENU  */}
         <nav className="hidden items-center gap-0.5 lg:flex">
           {/* Home */}
           <a
@@ -53,36 +53,36 @@ const Navbar = () => {
 
           {/* Products */}
           <a
-            href="/products"
+            href=""
             className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
           >
             Products
           </a>
 
+          {/* Catalogues */}
+          <a
+            href=""
+            className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
+          >
+            <span>Catalogues</span>
+            <KeyboardArrowDownIcon sx={{ fontSize: 15 }} />
+          </a>
+
           {/* Services */}
           <a
-            href="/services"
+            href=""
             className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
           >
             <span>Services</span>
             <KeyboardArrowDownIcon sx={{ fontSize: 15 }} />
           </a>
 
-          {/* Patients */}
+          {/* Clients */}
           <a
-            href="/patients"
+            href=""
             className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
           >
-            <span>Patients</span>
-            <KeyboardArrowDownIcon sx={{ fontSize: 15 }} />
-          </a>
-
-          {/* Resources */}
-          <a
-            href="/resources"
-            className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
-          >
-            <span>Resources</span>
+            <span>Clients</span>
             <KeyboardArrowDownIcon sx={{ fontSize: 15 }} />
           </a>
 
