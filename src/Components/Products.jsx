@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import BPMonitor from "../assets/images/BP_Monitor.png";
 import BipolarPlasmaGenerator from "../assets/images/bipolar_plasma_generator.png";
 // import InfraredThermometer from "../assets/images/Infrared_Thermometer.png";
@@ -7,6 +7,7 @@ import DiodeLaser from "../assets/images/diode_laser.png";
 import CyberBlade from "../assets/images/cyber_blade.png";
 import BladderScanner from "../assets/images/bladder_scanner.png";
 import FlexibleVideoURS from "../assets/images/flexible_video_urs.png";
+import EndoVisionSet from "../assets/images/endo_vision_set.png";
 
 const Products = () => {
   const products = [
@@ -43,8 +44,8 @@ const Products = () => {
       lineColor: "bg-[#F15B91]",
     },
     {
-      name: "Diode Laser",
-      image: DiodeLaser,
+      name: "Endo Vision Set",
+      image: EndoVisionSet,
       bg: "bg-[#F4F0FF]",
       iconBg: "bg-[#E6DDFF]",
       iconColor: "text-[#7357E8]",
@@ -87,16 +88,20 @@ const Products = () => {
   const [startIndex, setStartIndex] = useState(0);
 
   const nextSlide = () => {
-    if (startIndex < products.length - 5) {
-      setStartIndex((prev) => prev + 1);
-    }
+    setStartIndex((prev) => (prev >= products.length - 5 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    if (startIndex > 0) {
-      setStartIndex((prev) => prev - 1);
-    }
+    setStartIndex((prev) => (prev <= 0 ? products.length - 5 : prev - 1));
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIndex((prev) => (prev >= products.length - 5 ? 0 : prev + 1));
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const visibleProducts = products.slice(startIndex, startIndex + 5);
 
@@ -201,8 +206,8 @@ const Products = () => {
 
                     ${
                       isCenter
-                        ? "w-[23%] min-w-[190px] h-[300px] -translate-y-2 shadow-[0_18px_45px_rgba(55,75,110,0.15)]"
-                        : "w-[18.5%] min-w-[145px] h-[255px] shadow-[0_8px_30px_rgba(55,75,110,0.07)]"
+                        ? "w-[23%] min-w-[205px] h-[325px] -translate-y-2 shadow-[0_18px_45px_rgba(55,75,110,0.15)]"
+                        : "w-[18.5%] min-w-[160px] h-[280px] shadow-[0_8px_30px_rgba(55,75,110,0.07)]"
                     }
 
                     transition-all duration-500 ease-out
@@ -216,7 +221,7 @@ const Products = () => {
                       absolute left-1/2 top-8 -translate-x-1/2
                       rounded-full opacity-50 blur-[1px]
                       ${product.iconBg}
-                      ${isCenter ? "h-36 w-36" : "h-28 w-28"}
+                      ${isCenter ? "h-40 w-40" : "h-32 w-32"}
                     `}
                   />
 
@@ -224,7 +229,7 @@ const Products = () => {
                   <div
                     className={`
                       relative flex items-center justify-center
-                      ${isCenter ? "h-[205px]" : "h-[170px]"}
+                      ${isCenter ? "h-[220px]" : "h-[185px]"}
                     `}
                   >
                     <img
@@ -236,50 +241,24 @@ const Products = () => {
                         group-hover:scale-105
                         ${
                           isCenter
-                            ? "max-h-[175px] max-w-[88%]"
-                            : "max-h-[145px] max-w-[85%]"
+                            ? "max-h-[190px] max-w-[88%]"
+                            : "max-h-[160px] max-w-[85%]"
                         }
                       `}
                     />
                   </div>
 
                   {/* Bottom Content */}
-                  <div className="relative z-10 px-2 text-center">
+                  <div className="relative z-10 px-2 pb-2 text-center">
                     <h3
                       className={`
+                        mt-2
                         font-semibold text-[#253653]
                         ${isCenter ? "text-sm" : "text-[11px] sm:text-xs"}
                       `}
                     >
                       {product.name}
                     </h3>
-
-                    {/* Colored Line */}
-                    <div
-                      className={`
-                        mx-auto mt-2 h-[2px] rounded-full
-                        ${product.lineColor}
-                        ${isCenter ? "w-7" : "w-5"}
-                      `}
-                    />
-
-                    {/* Arrow Circle */}
-                    <div
-                      className={`
-                        mx-auto mt-3 flex items-center justify-center
-                        rounded-full border border-white
-                        bg-white/80
-                        shadow-sm
-                        transition-all duration-300
-                        group-hover:scale-110
-                        ${product.iconColor}
-                        ${isCenter ? "h-8 w-8" : "h-7 w-7"}
-                      `}
-                    >
-                      <span className={isCenter ? "text-sm" : "text-xs"}>
-                        →
-                      </span>
-                    </div>
                   </div>
                 </div>
               );

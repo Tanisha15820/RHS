@@ -8,6 +8,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
 import homeBanner from "../assets/images/compressed_home_banner.png";
 import Products from "../Components/Products";
+// import WhyChooseUs from "../Components/WhyChooseUs";
 
 const HomePage = () => {
   return (
@@ -188,6 +189,7 @@ const HomePage = () => {
         </div>
       </section>
       <Products />
+      {/* <WhyChooseUs /> */}
     </div>
   );
 };
