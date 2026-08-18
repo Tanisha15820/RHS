@@ -1,77 +1,82 @@
 import React, { useState } from "react";
-import BPMonitor from "../assets/images/BP_Monitor.png";
-import InfraredThermometer from "../assets/images/Infrared_Thermometer.png";
-import PulseOximeter from "../assets/images/Pulse_oximeter.png";
+// import BPMonitor from "../assets/images/BP_Monitor.png";
+import BipolarPlasmaGenerator from "../assets/images/bipolar_plasma_generator.png";
+// import InfraredThermometer from "../assets/images/Infrared_Thermometer.png";
+import DiodeLaser from "../assets/images/diode_laser.png";
+// import PulseOximeter from "../assets/images/Pulse_oximeter.png";
+import CyberBlade from "../assets/images/cyber_blade.png";
+import BladderScanner from "../assets/images/bladder_scanner.png";
+import FlexibleVideoURS from "../assets/images/flexible_video_urs.png";
 
 const Products = () => {
   const products = [
     {
-      name: "Digital BP Monitor",
-      image: BPMonitor,
+      name: "Bipolar Plasma Generator",
+      image: BipolarPlasmaGenerator,
       bg: "bg-[#F1EDFF]",
       iconBg: "bg-[#E4DAFF]",
       iconColor: "text-[#7357E8]",
       lineColor: "bg-[#7357E8]",
     },
     {
-      name: "Infrared Thermometer",
-      image: InfraredThermometer,
+      name: "Diode Laser",
+      image: DiodeLaser,
       bg: "bg-[#EDF9F7]",
       iconBg: "bg-[#D5F2EC]",
       iconColor: "text-[#1EAE9B]",
       lineColor: "bg-[#1EAE9B]",
     },
     {
-      name: "Pulse Oximeter",
-      image: PulseOximeter,
+      name: "CyberBlade",
+      image: CyberBlade,
       bg: "bg-[#EEF5FF]",
       iconBg: "bg-[#D9E8FF]",
       iconColor: "text-[#4285E8]",
       lineColor: "bg-[#4285E8]",
     },
     {
-      name: "Digital BP Monitor",
-      image: BPMonitor,
+      name: "Flexible Video URS",
+      image: FlexibleVideoURS,
       bg: "bg-[#FFF1F5]",
       iconBg: "bg-[#FFE0E9]",
       iconColor: "text-[#F15B91]",
       lineColor: "bg-[#F15B91]",
     },
     {
-      name: "Infrared Thermometer",
-      image: InfraredThermometer,
+      name: "Diode Laser",
+      image: DiodeLaser,
       bg: "bg-[#F4F0FF]",
       iconBg: "bg-[#E6DDFF]",
       iconColor: "text-[#7357E8]",
       lineColor: "bg-[#7357E8]",
     },
     {
-      name: "Pulse Oximeter",
-      image: PulseOximeter,
+      name: "Cyber Blade",
+      image: CyberBlade,
       bg: "bg-[#EDF8FF]",
       iconBg: "bg-[#DCEEFF]",
       iconColor: "text-[#4285E8]",
       lineColor: "bg-[#4285E8]",
     },
     {
-      name: "Digital BP Monitor",
-      image: BPMonitor,
+      name: "Bipolar Plasma Generator",
+      image: BipolarPlasmaGenerator,
       bg: "bg-[#FFF1F5]",
       iconBg: "bg-[#FFE0E9]",
       iconColor: "text-[#F15B91]",
       lineColor: "bg-[#F15B91]",
     },
     {
-      name: "Infrared Thermometer",
-      image: InfraredThermometer,
+      name: "Diode Laser",
+      image: DiodeLaser,
       bg: "bg-[#F4F0FF]",
       iconBg: "bg-[#E6DDFF]",
       iconColor: "text-[#7357E8]",
       lineColor: "bg-[#7357E8]",
     },
     {
-      name: "Pulse Oximeter",
-      image: PulseOximeter,
+      name: "Cyber Blade",
+      image: CyberBlade,
       bg: "bg-[#EDF8FF]",
       iconBg: "bg-[#DCEEFF]",
       iconColor: "text-[#4285E8]",
