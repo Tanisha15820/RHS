@@ -253,12 +253,12 @@ const Navbar = () => {
             className="h-14 w-auto object-contain md:h-16"
           />
 
-          <div className="hidden leading-tight sm:block">
-            <h1 className="text-[16px] font-extrabold tracking-tight text-primary-dark">
+          <div className="leading-tight">
+            <h1 className="text-[13px] font-extrabold tracking-tight text-primary-dark sm:text-[16px]">
               REINFORCE
             </h1>
 
-            <p className="text-[10px] font-bold tracking-widest text-primary">
+            <p className="text-[8px] font-bold tracking-widest text-primary sm:text-[10px]">
               HEALTHCARE SERVICES
             </p>
           </div>
