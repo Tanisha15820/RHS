@@ -1,8 +1,9 @@
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
 import homeBanner from "../assets/images/compressed_home_banner.png";
@@ -41,18 +42,18 @@ const HomePage = () => {
 
             {/* Heading */}
             <h1 className="text-4xl font-bold leading-[1.15] text-slate-900 sm:text-5xl lg:text-[52px]">
-              Compassionate Care.
+              Quality Equipment.
               <br />
               <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-                Healthier Tomorrow.
+                Better Healthcare.
               </span>
             </h1>
 
             {/* Description */}
             <p className="mt-5 max-w-[500px] text-base leading-7 text-slate-600">
-              Reinforce Healthcare Services is committed to providing
-              world-class medical care with advanced technology and a
-              patient-first approach.
+              Reinforce Healthcare Services delivers quality medical equipment
+              and innovative solutions designed to support healthcare
+              professionals across multiple specialties.
             </p>
 
             {/* ================= FEATURES ================= */}
@@ -67,21 +68,21 @@ const HomePage = () => {
                 </div>
 
                 <span className="text-xs font-medium text-slate-600">
-                  Expert Doctors
+                  Specialized Equipment
                 </span>
               </div>
 
               {/* Feature 2 */}
               <div className="flex flex-col items-center rounded-xl bg-white/80 px-3 py-3 text-center shadow-sm backdrop-blur-sm">
                 <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                  <FavoriteBorderIcon
+                  <CategoryOutlinedIcon
                     className="text-primary"
                     style={{ fontSize: 21 }}
                   />
                 </div>
 
                 <span className="text-xs font-medium text-slate-600">
-                  Advanced Care
+                  Multiple Specialties
                 </span>
               </div>
 
@@ -94,8 +95,8 @@ const HomePage = () => {
                   />
                 </div>
 
-                <span className="text-xs font-medium text-slate-600 whitespace-nowrap">
-                  Modern Facilities
+                <span className="text-xs font-medium text-slate-600">
+                  Quality <br /> Products
                 </span>
               </div>
 
@@ -109,7 +110,7 @@ const HomePage = () => {
                 </div>
 
                 <span className="text-xs font-medium text-slate-600">
-                  Patient First
+                  Expert <br /> Support
                 </span>
               </div>
             </div>
@@ -130,15 +131,15 @@ const HomePage = () => {
                 type="button"
                 className="flex w-full items-center justify-center gap-2 rounded-lg border border-primary/30 bg-white/80 px-5 py-3 text-sm font-semibold text-primary-dark backdrop-blur-sm transition-all duration-300 hover:bg-white sm:w-auto"
               >
-                <PlayCircleOutlinedIcon style={{ fontSize: 20 }} />
-                Watch Our Video
+                <ArrowForwardIcon style={{ fontSize: 18 }} />
+                Explore Products
               </button>
             </div>
           </div>
         </div>
 
         {/* ================= STATS CARD ================= */}
-        <div className="relative z-20 mx-auto mt-6 w-[92%] max-w-4xl md:absolute md:bottom-5 md:left-1/2 md:mt-0 md:-translate-x-1/2">
+        <div className="relative z-20 mx-auto mt-6 w-[92%] max-w-4xl md:absolute md:bottom-3 md:left-1/2 md:mt-0 md:-translate-x-1/2">
           <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-white/70 bg-white/90 shadow-xl backdrop-blur-md md:grid-cols-4">
             <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-4 md:border-b-0 md:border-r">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
@@ -146,8 +147,8 @@ const HomePage = () => {
               </div>
 
               <div>
-                <p className="text-lg font-bold text-primary-dark">25+</p>
-                <p className="text-xs text-slate-500">Specialities</p>
+                <p className="text-lg font-bold text-primary-dark">50+</p>
+                <p className="text-xs text-slate-500">Product Categories</p>
               </div>
             </div>
 
@@ -157,8 +158,8 @@ const HomePage = () => {
               </div>
 
               <div>
-                <p className="text-lg font-bold text-primary-dark">100+</p>
-                <p className="text-xs text-slate-500">Hospitals & Centers</p>
+                <p className="text-lg font-bold text-primary-dark">10+</p>
+                <p className="text-xs text-slate-500">Medical Specialties</p>
               </div>
             </div>
 
@@ -168,19 +169,19 @@ const HomePage = () => {
               </div>
 
               <div>
-                <p className="text-lg font-bold text-primary-dark">1M+</p>
-                <p className="text-xs text-slate-500">Happy Patients</p>
+                <p className="text-lg font-bold text-primary-dark">100+</p>
+                <p className="text-xs text-slate-500">Quality Products</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3 px-5 py-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                <FavoriteBorderIcon className="text-primary" />
+                <CategoryOutlinedIcon className="text-primary" />
               </div>
 
               <div>
                 <p className="text-lg font-bold text-primary-dark">24/7</p>
-                <p className="text-xs text-slate-500">Patient Support</p>
+                <p className="text-xs text-slate-500">Expert Support</p>
               </div>
             </div>
           </div>
