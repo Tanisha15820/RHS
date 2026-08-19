@@ -62,6 +62,10 @@ const GeneralSurgery = () => {
       name: "Diode Laser",
       image: diodeLaser,
     },
+    {
+      name: "Diode Laser",
+      image: diodeLaser,
+    },
   ];
 
   const subCategories = ["Bipolar Plasma Generator", "Diode Laser"];
