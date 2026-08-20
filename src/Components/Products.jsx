@@ -109,11 +109,8 @@ const Products = () => {
     <section className="relative overflow-hidden bg-[#F9FBFF] py-16 sm:py-20">
       {/* Background Decorations */}
       <div className="absolute -left-20 -top-20 h-52 w-52 rounded-full bg-[#E9E6FF]/70 blur-2xl" />
-
       <div className="absolute -right-24 top-0 h-64 w-64 rounded-full bg-[#E7F5FF]/80 blur-3xl" />
-
       <div className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-[#EEF0FF] blur-3xl" />
-
       <div className="absolute -bottom-28 -right-20 h-72 w-72 rounded-full bg-[#E8F8F5] blur-3xl" />
 
       {/* Decorative Plus Signs */}

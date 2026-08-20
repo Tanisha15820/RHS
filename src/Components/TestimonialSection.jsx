@@ -1,0 +1,177 @@
+import AddIcon from "@mui/icons-material/Add";
+import { motion } from "framer-motion";
+
+const testimonials = [
+  {
+    text: "The quality of these medical devices is outstanding. They're reliable, easy to use,and patient outcomes.",
+    name: "Dr. Sarah Mitchell",
+    role: "Orthopedic Surgeon, Riverdale Health",
+    image: "https://i.pravatar.cc/100?img=47",
+    bg: "bg-[#EDE9FE]",
+  },
+  {
+    text: "The quality of these medical devices is outstanding. They're reliable, easy to use,and patient outcomes.",
+    name: "Dr. Sarah Mitchell",
+    role: "Orthopedic Surgeon, Riverdale Health",
+    image: "https://i.pravatar.cc/100?img=47",
+    bg: "bg-[#E0F2FE]",
+  },
+  {
+    text: "The quality of these medical devices is outstanding. They're reliable, easy to use, and patient outcomes.",
+    name: "Dr. Sarah Mitchell",
+    role: "Orthopedic Surgeon, Riverdale Health",
+    image: "https://i.pravatar.cc/100?img=47",
+    bg: "bg-[#FEE2E2]",
+  },
+  {
+    text: "The quality of these medical devices is outstanding. They're reliable, easy to use, and patient outcomes.",
+    name: "Dr. Sarah Mitchell",
+    role: "Orthopedic Surgeon, Riverdale Health",
+    image: "https://i.pravatar.cc/100?img=47",
+    bg: "bg-white",
+  },
+  {
+    text: "The quality of these medical devices is outstanding. They're reliable, easy to use, and patient outcomes.",
+    name: "Dr. Sarah Mitchell",
+    role: "Orthopedic Surgeon, Riverdale Health",
+    image: "https://i.pravatar.cc/100?img=47",
+    bg: "bg-[#FAE8FF]",
+  },
+  {
+    text: "The quality of these medical devices is outstanding. They're reliable, easy to use, and patient outcomes.",
+    name: "Dr. Sarah Mitchell",
+    role: "Orthopedic Surgeon, Riverdale Health",
+    image: "https://i.pravatar.cc/100?img=47",
+    bg: "bg-[#EDE9FE]",
+  },
+];
+
+const TestimonialSection = () => {
+  return (
+    <section className="relative overflow-hidden bg-[#F9FBFF] py-16 sm:py-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
+        {/* Heading */}
+        <div className="mb-10 text-center">
+          <div className="mb-3 flex items-center justify-center gap-3">
+            <span className="h-px w-7 bg-[#20B7AE]" />
+
+            <span className="text-xs font-bold uppercase tracking-wider text-[#20AFA7]">
+              Testimonials
+            </span>
+            <span className="h-px w-7 bg-[#20B7AE]" />
+          </div>
+
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+            Our Trusted{" "}
+            <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+              Clients
+            </span>
+          </h2>
+
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#7C879C]">
+            Hear from healthcare professionals and customers
+            <br className="hidden sm:block" />
+            who trust us for quality products
+          </p>
+        </div>
+
+        {/* Testimonial Cards */}
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{
+                opacity: 0,
+                x:
+                  index === 0
+                    ? -180
+                    : index === 1
+                      ? 20
+                      : index === 2
+                        ? 180
+                        : index === 3
+                          ? -120
+                          : index === 4
+                            ? 100
+                            : 180,
+                y:
+                  index === 0
+                    ? 30
+                    : index === 1
+                      ? -100
+                      : index === 2
+                        ? 30
+                        : index === 3
+                          ? 100
+                          : index === 4
+                            ? -50
+                            : 80,
+                rotate:
+                  index === 0
+                    ? -8
+                    : index === 1
+                      ? 6
+                      : index === 2
+                        ? 10
+                        : index === 3
+                          ? -5
+                          : index === 4
+                            ? 8
+                            : -7,
+                scale: 0.9,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                rotate: 0,
+                scale: 1,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.3,
+              }}
+              transition={{
+                duration: 1.5,
+                delay: index * 0.5,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className={`rounded-xl border border-slate-100 p-5 shadow-sm ${testimonial.bg}`}
+            >
+              {/* Quote */}
+              {/* <div className="mb-2 text-4xl font-bold leading-none text-slate-800">
+                “
+              </div> */}
+
+              {/* Text */}
+              <p className="min-h-[90px] text-sm leading-5 text-slate-700">
+                {testimonial.text}
+              </p>
+
+              {/* User */}
+              <div className="mt-5 flex items-center gap-3">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="h-9 w-9 rounded-full object-cover"
+                />
+
+                <div>
+                  <h4 className="text-xs font-bold text-slate-800">
+                    {testimonial.name}
+                  </h4>
+
+                  <p className="mt-0.5 text-[10px] leading-4 text-slate-500">
+                    {testimonial.role}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TestimonialSection;

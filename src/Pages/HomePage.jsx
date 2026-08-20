@@ -9,13 +9,13 @@ import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
 import homeBanner from "../assets/images/compressed_home_banner.png";
 import Products from "../Components/Products";
 import WhyChooseUs from "../Components/WhyChooseUs";
+import TestimonialSection from "../Components/TestimonialSection";
+import FAQ from "../Components/FAQ";
 
 const HomePage = () => {
   return (
     <div className="w-full">
-      {/* ================= HERO BANNER ================= */}
       <section className="relative min-h-[500px] w-full overflow-hidden bg-primary/5">
-        {/* Animated Background */}
         <div
           className="absolute inset-0 animate-zoom-slow bg-cover bg-center bg-no-repeat"
           style={{
@@ -29,7 +29,6 @@ const HomePage = () => {
         <div className="relative z-10 mx-auto flex min-h-[520px] max-w-7xl items-center px-5 py-10 sm:px-6 md:min-h-[620px] md:py-16 lg:px-10">
           {/* LEFT CONTENT */}
           <div className="w-full max-w-[540px] md:-mt-16">
-            {/* Small Badge */}
             <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm">
               <ShieldOutlinedIcon
                 className="text-primary"
@@ -57,7 +56,7 @@ const HomePage = () => {
               professionals across multiple specialties.
             </p>
 
-            {/* ================= FEATURES ================= */}
+            {/*  FEATURES  */}
             <div className="mt-7 grid max-w-[500px] grid-cols-2 gap-3 sm:grid-cols-4">
               {/* Feature 1 */}
               <div className="flex flex-col items-center rounded-xl bg-white/80 px-3 py-3 text-center shadow-sm backdrop-blur-sm">
@@ -139,7 +138,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* ================= STATS CARD ================= */}
+        {/* STATS CARD */}
         <div className="relative z-20 mx-auto mt-6 w-[92%] max-w-4xl md:absolute md:bottom-3 md:left-1/2 md:mt-0 md:-translate-x-1/2">
           <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-white/70 bg-white/90 shadow-xl backdrop-blur-md md:grid-cols-4">
             <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-4 md:border-b-0 md:border-r">
@@ -190,6 +189,8 @@ const HomePage = () => {
       </section>
       <Products />
       <WhyChooseUs />
+      <TestimonialSection />
+      <FAQ />
     </div>
   );
 };

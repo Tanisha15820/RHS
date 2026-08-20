@@ -1,51 +1,4 @@
-// import React from "react";
-
-// import generalSurgeryBg from "../assets/images/General_Surgery.png";
-
-// const GeneralSurgery = () => {
-//   return (
-//     <div className="min-h-screen bg-background">
-//       <section
-//         className="relative overflow-hidden"
-//         style={{
-//           backgroundImage: `url(${generalSurgeryBg})`,
-//           backgroundSize: "cover",
-//           backgroundPosition: "center",
-//         }}
-//       >
-//         <div className="relative mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-10">
-//           {/* Heading */}
-//           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-//             General{" "}
-//             <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-//               Surgery
-//             </span>
-//           </h1>
-
-//           {/* Small line */}
-//           <div className="mt-3 h-[2px] w-10 bg-primary" />
-
-//           {/* Description */}
-//           <p className="mt-4 max-w-md text-xs leading-5 text-slate-500 md:text-sm">
-//             Explore our wide range of high-quality general surgery instruments
-//             and equipment.
-//           </p>
-//         </div>
-//         <div className="grid grid-cols-2">
-//           <div className="flex items-center bg-white shadow-xl">
-//             <h1 className="font-bold text-lg">Categories</h1>
-//           </div>
-//           <div></div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// };
-
-// export default GeneralSurgery;
-
 import React, { useState } from "react";
-
 import generalSurgeryBg from "../assets/images/surgery_banner.png";
 import bipolarPlasmaGenerator from "../assets/images/bipolar_plasma_generator.png";
 import diodeLaser from "../assets/images/diode_laser.png";
@@ -89,7 +42,6 @@ const GeneralSurgery = () => {
           </h1>
 
           <div className="mt-3 h-[2px] w-10 bg-primary" />
-
           <p className="mt-4 max-w-md text-xs leading-5 text-slate-500 md:text-sm">
             Explore our wide range of high-quality general surgery instruments
             and equipment.
@@ -97,15 +49,11 @@ const GeneralSurgery = () => {
         </div>
       </section>
 
-      {/* =====================================================
-          PRODUCTS SECTION
-      ====================================================== */}
+      {/* PRODUCTS SECTION */}
 
       <section className="bg-white px-5 py-8 md:px-8 lg:py-10">
         <div className="mx-auto max-w-7xl">
-          {/* =================================================
-              TOP BAR
-          ================================================== */}
+          {/* TOP BAR */}
 
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {/* Product Count */}
@@ -127,8 +75,7 @@ const GeneralSurgery = () => {
                 className="
                   flex items-center gap-2 rounded-lg border border-slate-200
                   bg-white px-4 py-2.5 text-xs font-medium text-slate-600
-                  transition hover:border-primary hover:text-primary
-                "
+                  transition hover:border-primary hover:text-primary"
               >
                 <span>☷</span>
                 Sort by

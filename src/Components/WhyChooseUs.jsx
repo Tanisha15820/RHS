@@ -5,9 +5,9 @@ import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivism
 import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
-import healthcareImage from "../assets/images/healthcare_1.jpg";
-import familyImage from "../assets/images/healthcare2.jpg";
-import doctorImage from "../assets/images/healthcare_3.jpg";
+import healthcareImage from "../assets/images/choose1.png";
+import familyImage from "../assets/images/choose2.png";
+import doctorImage from "../assets/images/choose3.png";
 
 const WhyChooseUs = () => {
   const features = [
