@@ -11,7 +11,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 import PrivacyTipOutlinedIcon from "@mui/icons-material/PrivacyTipOutlined";
-import logo from "../assets/images/rhs_logo.png";
+import logo from "../assets/images/compressed_rhs_logo.png";
 
 const quickLinks = ["Home", "Products", "Services"];
 
@@ -45,18 +45,12 @@ const trustItems = [
 const Footer = () => {
   return (
     <footer className="bg-background pt-8">
-      {/* =====================================================
-          MAIN FOOTER
-      ===================================================== */}
+      {/* MAIN FOOTER */}
       <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl border border-primary/10 bg-white shadow-[0_6px_30px_rgba(37,37,184,0.1)] ring-1 ring-primary/10">
-        {/* =====================================================
-            TOP FOOTER
-        ===================================================== */}
+        {/* TOP FOOTER */}
         <div className="px-6 py-8 md:px-8 lg:px-10">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
-            {/* =================================================
-                ABOUT
-            ================================================= */}
+            {/* ABOUT */}
             <div className="lg:pr-5">
               {/* Logo */}
               <div className="flex items-center gap-2">
@@ -116,9 +110,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* =================================================
-                QUICK LINKS
-            ================================================= */}
+            {/*  QUICK LINKS */}
             <div>
               <h3 className="mb-4 text-[14px] font-bold text-primary-dark">
                 Quick Links
@@ -131,9 +123,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* =================================================
-                OUR SERVICES
-            ================================================= */}
+            {/* OUR SERVICES*/}
             <div>
               <h3 className="mb-4 text-[14px] font-bold text-primary-dark">
                 Our Services
@@ -146,9 +136,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* =================================================
-                FOR PATIENTS
-            ================================================= */}
+            {/* Contact us*/}
             <div>
               <h3 className="mb-4 text-[14px] font-bold text-primary-dark">
                 Contact Us
@@ -161,9 +149,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* =================================================
-                GET IN TOUCH
-            ================================================= */}
+            {/* GET IN TOUCH */}
             <div>
               <h3 className="mb-4 text-[14px] font-bold text-primary-dark">
                 Get in Touch
@@ -179,9 +165,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            TRUST SECTION
-        ===================================================== */}
+        {/* TRUST SECTION */}
         <div className="mx-5 mb-5 rounded-xl border border-primary/10 bg-white shadow-[0_4px_20px_rgba(25,168,232,0.08)] md:mx-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {trustItems.map((item, index) => (
@@ -196,9 +180,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            BOTTOM BLUE BAR
-        ===================================================== */}
+        {/* BOTTOM BLUE BAR*/}
         <div className="relative overflow-hidden bg-gradient-to-r from-primary-dark to-primary px-6 py-5 md:px-8 lg:px-10">
           {/* Decorative Circle */}
           <div className="absolute -right-10 -top-16 h-40 w-40 rounded-full border border-white/5"></div>

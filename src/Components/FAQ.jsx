@@ -1,92 +1,86 @@
-// import { faq } from "../assets/images/faq.png";
+import React, { useEffect, useState } from "react";
 
-// const FAQ = () => {
-//   return (
-//     <section className="relative overflow-hidden bg-[#F9FBFF] py-16 sm:py-20">
-//       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
-//         {/* Heading */}
-//         <div className="mb-10 text-center">
-//           <div className="mb-3 flex items-center justify-center gap-3">
-//             <span className="h-px w-7 bg-[#20B7AE]" />
+import faqImage from "../assets/images/faq_image.png";
 
-//             <span className="text-xs font-bold uppercase tracking-wider text-[#20AFA7]">
-//               FAQ'S
-//             </span>
-//             <span className="h-px w-7 bg-[#20B7AE]" />
-//           </div>
-
-//           <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-//             Frequently Asked{" "}
-//             <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-//               Questions
-//             </span>
-//           </h2>
-
-//           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#7C879C]">
-//             Find answers to common questions about our products,
-//             <br className="hidden sm:block" />
-//             services and support.
-//           </p>
-//         </div>
-//       </div>
-
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-//         <div className="">
-//           <img src={faq} alt="faq image" />
-//         </div>
-//         <div className="flex items-center ">
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default FAQ;
-
-import { useState } from "react";
-import faq from "../assets/images/faq.png";
-
-// FAQ Data
-const faqData = [
-  {
-    question: "What types of healthcare products do you offer?",
-    answer:
-      "We offer a wide range of advanced medical devices and equipment including Bipolar Plasma Generators, Diode Lasers, Endoscopy Systems, Flexible Video URS and more. Our products are designed to deliver precision, safety and reliability in modern healthcare.",
-  },
-  {
-    question: "Are your products certified and safe to use?",
-    answer:
-      "Yes, our healthcare products are manufactured according to required quality and safety standards. We focus on providing reliable and safe medical equipment for healthcare professionals.",
-  },
-  {
-    question: "Do you provide installation and training?",
-    answer:
-      "Yes, we provide installation support and product training to help healthcare professionals and medical staff use our equipment correctly and efficiently.",
-  },
-  {
-    question: "What kind of after-sales support do you provide?",
-    answer:
-      "We provide dedicated after-sales support, maintenance assistance and technical guidance whenever required to ensure smooth operation of our products.",
-  },
-  {
-    question: "Do you offer warranty on your products?",
-    answer:
-      "Yes, warranty coverage is available on our products. The warranty period may vary depending on the product and its terms.",
-  },
-  {
-    question: "Do you supply products internationally?",
-    answer:
-      "Yes, we work with healthcare organizations and customers across different regions and can provide international product supply depending on the location.",
-  },
-];
+// MUI Icons
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import PersonIcon from "@mui/icons-material/Person";
+import BuildIcon from "@mui/icons-material/Build";
+import DescriptionIcon from "@mui/icons-material/Description";
+import PublicIcon from "@mui/icons-material/Public";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const FAQ = () => {
-  // Stores which FAQ is currently open
   const [openIndex, setOpenIndex] = useState(0);
 
-  // Open / close FAQ
-  const handleFAQ = (index) => {
+  // Controls the entrance animation of FAQ cards
+  const [showFAQs, setShowFAQs] = useState(false);
+
+  // Start FAQ animation after component loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowFAQs(true);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // =====================================================
+  // FAQ DATA
+  // =====================================================
+
+  const faqs = [
+    {
+      question: "What types of healthcare products do you offer?",
+      answer:
+        "We offer a wide range of advanced medical devices and equipment including Bipolar Plasma Generators, Diode Lasers, Endoscopy Systems, Flexible Video URS and more.",
+      icon: <MedicalServicesIcon />,
+    },
+
+    {
+      question: "Are your products certified and safe to use?",
+      answer:
+        "Yes, our healthcare products are manufactured according to quality and safety standards. We focus on providing reliable and safe medical equipment.",
+      icon: <VerifiedUserIcon />,
+    },
+
+    {
+      question: "Do you provide installation and training?",
+      answer:
+        "Yes. Our team provides installation assistance and product training to help healthcare professionals use the equipment correctly and efficiently.",
+      icon: <PersonIcon />,
+    },
+
+    {
+      question: "What kind of after-sales support do you provide?",
+      answer:
+        "We provide reliable after-sales support including technical assistance, troubleshooting and maintenance guidance whenever required.",
+      icon: <BuildIcon />,
+    },
+
+    {
+      question: "Do you offer warranty on your products?",
+      answer:
+        "Yes, warranty coverage is available for selected products. The warranty period and terms may vary depending on the product.",
+      icon: <DescriptionIcon />,
+    },
+
+    {
+      question: "Do you supply products internationally?",
+      answer:
+        "Yes, we work with healthcare organizations and customers across different regions and can support international product requirements.",
+      icon: <PublicIcon />,
+    },
+  ];
+
+  // =====================================================
+  // FAQ OPEN / CLOSE
+  // =====================================================
+
+  const handleFAQClick = (index) => {
     if (openIndex === index) {
       setOpenIndex(null);
     } else {
@@ -95,43 +89,59 @@ const FAQ = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#F9FBFF] py-16 sm:py-20">
-      {/* Decorative Plus Icons */}
-      <span className="absolute right-8 top-8 text-2xl font-light text-[#DCE5F5]">
+    <section className="relative overflow-hidden bg-[#F9FBFF] py-12 sm:py-14 lg:py-16">
+      {/* =====================================================
+          BACKGROUND DECORATIONS
+      ====================================================== */}
+
+      <div className="absolute -left-24 -top-24 h-56 w-56 rounded-full bg-[#E7F5FF]/70 blur-3xl" />
+
+      <div className="absolute -right-24 top-0 h-64 w-64 rounded-full bg-[#EEF0FF]/70 blur-3xl" />
+
+      <div className="absolute -bottom-28 -left-20 h-64 w-64 rounded-full bg-[#E8F8F5]/70 blur-3xl" />
+
+      {/* =====================================================
+          DECORATIVE PLUS SIGNS
+      ====================================================== */}
+
+      <span className="absolute left-5 top-16 text-4xl font-light text-[#E2E8F5]">
         +
       </span>
 
-      <span className="absolute right-5 top-20 text-2xl font-light text-[#DCE5F5]">
+      <span className="absolute right-10 top-20 text-3xl font-light text-[#E1E7F5]">
         +
       </span>
 
-      <span className="absolute right-0 top-36 text-2xl font-light text-[#DCE5F5]">
+      <span className="absolute bottom-20 left-10 text-5xl font-light text-[#E7EAF5]">
         +
       </span>
 
-      <span className="absolute left-3 top-1/2 text-2xl font-light text-[#DCE5F5]">
-        +
-      </span>
+      {/* =====================================================
+          MAIN CONTAINER
+      ====================================================== */}
 
-      {/* Main Container */}
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
         {/* =====================================================
             HEADING
+
+            SAME STYLE AS PRODUCTS SECTION
         ====================================================== */}
 
-        <div className="mb-10 text-center">
+        <div className="mb-8 text-center">
           {/* Small Heading */}
+
           <div className="mb-3 flex items-center justify-center gap-3">
             <span className="h-px w-7 bg-[#20B7AE]" />
 
             <span className="text-xs font-bold uppercase tracking-wider text-[#20AFA7]">
-              FAQ'S
+              FAQS
             </span>
 
             <span className="h-px w-7 bg-[#20B7AE]" />
           </div>
 
           {/* Main Heading */}
+
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
             Frequently Asked{" "}
             <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
@@ -140,132 +150,236 @@ const FAQ = () => {
           </h2>
 
           {/* Description */}
+
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#7C879C]">
-            Find answers to common questions about our products,
+            Find answers to common questions about our products
             <br className="hidden sm:block" />
             services and support.
           </p>
         </div>
 
         {/* =====================================================
-            FAQ CONTENT
+            MAIN FAQ CONTENT
         ====================================================== */}
 
-        <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-[0.9fr_1.25fr]">
+        <div className="grid items-stretch gap-5 lg:grid-cols-[0.9fr_1.2fr] lg:gap-6">
           {/* =================================================
-              LEFT SIDE - IMAGE
-          ================================================= */}
+              LEFT SIDE
+          ================================================== */}
 
-          <div className="relative min-h-[430px] overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm">
+          <div
+            className="
+              group
+              relative
+              min-h-[390px]
+              overflow-hidden
+              rounded-2xl
+              border
+              border-white/80
+              bg-gradient-to-br
+              from-[#EEF8FF]
+              via-white
+              to-[#F2F0FF]
+              p-5
+              shadow-[0_8px_30px_rgba(55,75,110,0.07)]
+              transition-all
+              duration-500
+              hover:-translate-y-1
+              hover:shadow-[0_18px_45px_rgba(55,75,110,0.12)]
+              sm:p-6
+            "
+          >
+            {/* Soft Background Glow */}
+
+            <div
+              className="
+                absolute
+                -bottom-24
+                -left-16
+                h-64
+                w-64
+                rounded-full
+                bg-[#DDF3FF]
+                opacity-70
+                blur-3xl
+                transition-transform
+                duration-700
+                group-hover:scale-125
+              "
+            />
+
+            {/* =================================================
+                LEFT CONTENT
+            ================================================== */}
+            {/* =================================================
+                CUTOUT IMAGE
+            ================================================== */}
+
             <img
-              src={faq}
-              alt="Healthcare products"
-              className="h-full w-full object-cover"
+              src={faqImage}
+              alt="Healthcare Equipment"
+              className="
+                absolute
+                bottom-0
+                left-1/2
+                w-[88%]
+                max-w-[340px]
+                -translate-x-1/2
+                object-contain
+
+                transition-all
+                duration-700
+                ease-out
+
+                group-hover:-translate-y-5
+                group-hover:scale-110
+              "
             />
           </div>
 
           {/* =================================================
-              RIGHT SIDE - FAQ ACCORDION
-          ================================================= */}
+              RIGHT FAQ LIST
+          ================================================== */}
 
-          <div className="flex flex-col gap-3">
-            {faqData.map((item, index) => {
+          <div className="flex flex-col gap-2.5">
+            {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (
                 <div
                   key={index}
+                  // =================================================
+                  // ANIMATION
+                  // Each FAQ comes from RIGHT one after another
+                  // =================================================
+
+                  style={{
+                    opacity: showFAQs ? 1 : 0,
+
+                    transform: showFAQs ? "translateX(0)" : "translateX(70px)",
+
+                    transition: "opacity 0.6s ease, transform 0.6s ease",
+
+                    transitionDelay: `${index * 120}ms`,
+                  }}
                   className={`
+                    group
                     overflow-hidden
                     rounded-xl
                     border
                     bg-white
-                    shadow-sm
+
+                    ${
+                      isOpen
+                        ? "border-primary/20 shadow-[0_8px_25px_rgba(25,168,232,0.10)]"
+                        : "border-[#E6ECF4] shadow-[0_4px_15px_rgba(55,75,110,0.05)]"
+                    }
+
                     transition-all
                     duration-300
-                    ${
-                      isOpen ? "border-[#E7ECF5] shadow-md" : "border-slate-100"
-                    }
+
+                    hover:-translate-x-1
+                    hover:border-primary/20
+                    hover:shadow-[0_10px_25px_rgba(25,168,232,0.10)]
                   `}
                 >
-                  {/* Question */}
+                  {/* =================================================
+                      QUESTION BUTTON
+                  ================================================== */}
+
                   <button
-                    onClick={() => handleFAQ(index)}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                    type="button"
+                    onClick={() => handleFAQClick(index)}
+                    className="
+                      flex
+                      w-full
+                      items-center
+                      gap-3
+                      px-4
+                      py-3
+                      text-left
+                    "
                   >
-                    {/* Left Side */}
-                    <div className="flex min-w-0 items-center gap-4">
-                      {/* Icon */}
-                      {/* <div
-                        className={`
-                          flex
-                          h-10
-                          w-10
-                          shrink-0
-                          items-center
-                          justify-center
-                          rounded-full
-                          text-lg
-                          transition-all
-                          duration-300
-                          ${
-                            isOpen
-                              ? "bg-[#E4F9F7] text-[#20B7AE]"
-                              : "bg-[#F3F7FF] text-[#4D7CFE]"
-                          }
-                        `}
-                      >
-                        {index === 0 && "▣"}
-                        {index === 1 && "♢"}
-                        {index === 2 && "♧"}
-                        {index === 3 && "✣"}
-                        {index === 4 && "▤"}
-                        {index === 5 && "◎"}
-                      </div> */}
+                    {/* Icon */}
 
-                      {/* Question */}
-                      <span className="text-sm font-semibold text-[#263653] sm:text-[15px]">
-                        {item.question}
-                      </span>
-                    </div>
-
-                    {/* Arrow */}
-                    <span
+                    <div
                       className={`
+                        flex
+                        h-9
+                        w-9
                         shrink-0
-                        text-sm
-                        text-[#60708C]
-                        transition-transform
+                        items-center
+                        justify-center
+                        rounded-full
+                        transition-all
                         duration-300
-                        ${isOpen ? "rotate-180" : "rotate-0"}
+
+                        ${
+                          isOpen
+                            ? "bg-primary text-white"
+                            : "bg-[#EDF7FF] text-primary"
+                        }
+
+                        group-hover:scale-105
                       `}
                     >
-                      ⌄
+                      {React.cloneElement(faq.icon, {
+                        fontSize: "small",
+                      })}
+                    </div>
+
+                    {/* Question */}
+
+                    <span
+                      className="
+                        flex-1
+                        text-xs
+                        font-semibold
+                        text-[#253653]
+                        transition-colors
+                        duration-300
+                        group-hover:text-primary
+                        sm:text-sm
+                      "
+                    >
+                      {faq.question}
                     </span>
+
+                    {/* Arrow */}
+
+                    <KeyboardArrowDownIcon
+                      fontSize="small"
+                      className={`
+                        text-[#7C879C]
+                        transition-all
+                        duration-300
+
+                        group-hover:text-primary
+
+                        ${isOpen ? "rotate-180 text-primary" : ""}
+                      `}
+                    />
                   </button>
 
-                  {/* Answer */}
-                  <div
-                    className={`
-                      grid
-                      transition-all
-                      duration-300
-                      ease-in-out
-                      ${
-                        isOpen
-                          ? "grid-rows-[1fr] opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                      }
-                    `}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="px-5 pb-5 pl-[76px]">
-                        <p className="max-w-2xl text-xs leading-6 text-[#7C879C] sm:text-sm">
-                          {item.answer}
-                        </p>
-                      </div>
+                  {/* =================================================
+                      ANSWER
+                  ================================================== */}
+
+                  {isOpen && (
+                    <div
+                      className="
+                        animate-fade-in
+                        px-5
+                        pb-4
+                        pl-[64px]
+                        pr-5
+                      "
+                    >
+                      <p className="text-xs leading-5 text-[#7C879C] sm:text-sm sm:leading-6">
+                        {faq.answer}
+                      </p>
                     </div>
-                  </div>
+                  )}
                 </div>
               );
             })}

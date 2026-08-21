@@ -188,11 +188,10 @@ const Navbar = () => {
 
           {/* CATALOGUES */}
           <a
-            href=""
+            href="/blogs"
             className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
           >
-            <span>Catalogues</span>
-            <KeyboardArrowDownIcon sx={{ fontSize: 15 }} />
+            <span>Blogs</span>
           </a>
 
           {/* SERVICES */}

@@ -11,6 +11,7 @@ import Products from "../Components/Products";
 import WhyChooseUs from "../Components/WhyChooseUs";
 import TestimonialSection from "../Components/TestimonialSection";
 import FAQ from "../Components/FAQ";
+import Clients from "../Components/Clients";
 
 const HomePage = () => {
   return (
@@ -191,6 +192,7 @@ const HomePage = () => {
       <WhyChooseUs />
       <TestimonialSection />
       <FAQ />
+      <Clients />
     </div>
   );
 };
