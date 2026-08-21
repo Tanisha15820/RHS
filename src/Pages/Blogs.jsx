@@ -7,6 +7,7 @@ import {
   PenLine,
   Plus,
 } from "lucide-react";
+
 import blogBannerBg from "../assets/images/blogs.png";
 import blogImg1 from "../assets/images/blog_1.png";
 import blogImg2 from "../assets/images/blog_2.png";
@@ -59,9 +60,7 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* =========================================================
-          HERO
-      ========================================================== */}
+      {/* Hero section */}
       <section
         className="relative overflow-hidden"
         style={{
@@ -87,11 +86,7 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* =========================================================
-          BLOG SECTION
-          IMPORTANT:
-          Sticky behaviour is kept exactly here.
-      ========================================================== */}
+      {/* Blog section */}
       <section className="bg-white px-4 py-12 sm:px-5 md:px-8 lg:py-16">
         <div className="mx-auto max-w-6xl">
           {blogPosts.map((post, index) => (
@@ -103,9 +98,7 @@ const Blog = () => {
                 zIndex: index + 1,
               }}
             >
-              {/* =================================================
-                  BLOG CARD
-              ================================================== */}
+              {/* Blog card */}
               <article
                 className="
                   group
@@ -125,9 +118,7 @@ const Blog = () => {
                   lg:min-h-[290px]
                 "
               >
-                {/* =================================================
-                    LEFT IMAGE
-                ================================================== */}
+                {/* Blog image */}
                 <div
                   className="
                     relative
@@ -153,7 +144,7 @@ const Blog = () => {
                     "
                   />
 
-                  {/* Soft image overlay */}
+                  {/* Image overlay */}
                   <div
                     className="
                       absolute
@@ -165,9 +156,7 @@ const Blog = () => {
                     "
                   />
 
-                  {/* =================================================
-                      CURVED WHITE EDGE
-                  ================================================== */}
+                  {/* Curved white edge */}
                   <div
                     className="
                       absolute
@@ -182,9 +171,7 @@ const Blog = () => {
                     "
                   />
 
-                  {/* =================================================
-                      BLUE CURVE BEHIND WHITE EDGE
-                  ================================================== */}
+                  {/* Blue curve behind white edge */}
                   <div
                     className="
                       absolute
@@ -198,9 +185,7 @@ const Blog = () => {
                     "
                   />
 
-                  {/* =================================================
-                      CATEGORY PILL
-                  ================================================== */}
+                  {/* Category pill */}
                   <div
                     className="
                       absolute
@@ -232,9 +217,7 @@ const Blog = () => {
                   </div>
                 </div>
 
-                {/* =================================================
-                    RIGHT CONTENT
-                ================================================== */}
+                {/* Blog content */}
                 <div
                   className="
                     relative
@@ -251,9 +234,7 @@ const Blog = () => {
                     lg:py-8
                   "
                 >
-                  {/* =================================================
-                      DECORATIVE BACKGROUND
-                  ================================================== */}
+                  {/* Decorative background */}
                   <div
                     className="
                       pointer-events-none
@@ -265,7 +246,7 @@ const Blog = () => {
                       opacity-40
                     "
                   >
-                    {/* dotted grid */}
+                    {/* Dotted grid */}
                     <div
                       className="
                         absolute
@@ -275,7 +256,7 @@ const Blog = () => {
                       "
                     />
 
-                    {/* large plus */}
+                    {/* Large plus */}
                     <Plus
                       className="
                         absolute
@@ -288,7 +269,7 @@ const Blog = () => {
                       "
                     />
 
-                    {/* small plus */}
+                    {/* Small plus */}
                     <Plus
                       className="
                         absolute
@@ -300,19 +281,17 @@ const Blog = () => {
                       "
                     />
 
-                    {/* small circles */}
+                    {/* Decorative dots */}
                     <span className="absolute right-28 top-10 h-2 w-2 rounded-full bg-primary/20" />
                     <span className="absolute right-12 bottom-20 h-2 w-2 rounded-full bg-primary/20" />
                     <span className="absolute right-36 bottom-12 h-1.5 w-1.5 rounded-full bg-primary/20" />
 
-                    {/* connecting line */}
+                    {/* Decorative connecting lines */}
                     <div className="absolute right-14 top-16 h-[1px] w-24 rotate-[25deg] bg-primary/10" />
                     <div className="absolute right-20 top-20 h-16 w-[1px] rotate-[35deg] bg-primary/10" />
                   </div>
 
-                  {/* =================================================
-                      BOOKMARK
-                  ================================================== */}
+                  {/* Bookmark */}
                   <button
                     className="
                       absolute
@@ -339,9 +318,7 @@ const Blog = () => {
                     <Bookmark className="h-[18px] w-[18px]" strokeWidth={1.8} />
                   </button>
 
-                  {/* =================================================
-                      DATE + READ TIME
-                  ================================================== */}
+                  {/* Date and reading time */}
                   <div
                     className="
                       relative
@@ -368,9 +345,7 @@ const Blog = () => {
                     </span>
                   </div>
 
-                  {/* =================================================
-                      TITLE
-                  ================================================== */}
+                  {/* Blog title */}
                   <h2
                     className="
                       relative
@@ -393,9 +368,7 @@ const Blog = () => {
                     {post.title}
                   </h2>
 
-                  {/* =================================================
-                      DESCRIPTION
-                  ================================================== */}
+                  {/* Blog description */}
                   <p
                     className="
                       relative
@@ -412,9 +385,7 @@ const Blog = () => {
                     {post.excerpt}
                   </p>
 
-                  {/* =================================================
-                      READ MORE
-                  ================================================== */}
+                  {/* Read more */}
                   <button
                     className="
                       relative

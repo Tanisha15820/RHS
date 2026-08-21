@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import maxLogo from "../assets/images/max.png";
 import fortisLogo from "../assets/images/fortis.png";
+import siemensLogo from "../assets/images/siemens.png";
 
 const clients = [
   {
@@ -10,120 +11,132 @@ const clients = [
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F3F7FF]",
+    logo: maxLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F0FAFF]",
+    logo: fortisLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F0FBF6]",
+    logo: siemensLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F7F4FF]",
+    logo: maxLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F0F8FF]",
+    logo: siemensLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F0FBFA]",
+    logo: fortisLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#FFF7F2]",
+    logo: maxLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F1F7FF]",
+    logo: siemensLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F6F3FF]",
+    logo: fortisLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#EFFAF8]",
+    logo: maxLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F1F8FF]",
+    logo: siemensLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F0F8FC]",
+    logo: maxLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#FFF6F1]",
+    logo: fortisLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#FFF3F7]",
+    logo: siemensLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F1F7FF]",
+    logo: maxLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#FFF4F4]",
+    logo: fortisLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F2F7FC]",
+    logo: siemensLogo,
   },
   {
     name: "MAX Hospital",
     subtitle: "HOSPITALS",
     description: "Advanced medical care with patient-first excellence.",
     accent: "bg-[#F3F7FF]",
+    logo: maxLogo,
   },
 ];
 
-/* ============================================================
-   CLIENT CARD
-============================================================ */
+/* CLIENT CARD */
 
-const ClientCard = ({ client, index }) => {
-  // Even cards = MAX
-  // Odd cards = Fortis
-  const logo = index % 2 === 0 ? maxLogo : fortisLogo;
-
+const ClientCard = ({ client }) => {
   return (
     <div
       className="
@@ -152,9 +165,7 @@ const ClientCard = ({ client, index }) => {
         md:min-w-[260px]
       "
     >
-      {/* ======================================================
-          LOGO AREA
-      ======================================================= */}
+      {/* LOGO AREA */}
 
       <div
         className={`
@@ -171,8 +182,8 @@ const ClientCard = ({ client, index }) => {
       >
         <div className="flex h-full w-full items-center justify-center">
           <img
-            src={logo}
-            alt={index % 2 === 0 ? "MAX Hospital" : "Fortis Healthcare"}
+            src={client.logo}
+            alt={`${client.name} logo`}
             className="
               max-h-[75px]
               max-w-[165px]
@@ -189,9 +200,7 @@ const ClientCard = ({ client, index }) => {
         </div>
       </div>
 
-      {/* ======================================================
-          INFORMATION AREA
-      ======================================================= */}
+      {/* INFORMATION AREA */}
 
       <div className="flex flex-1 flex-col bg-[#F6FAFD] px-5 py-4">
         <h3
@@ -237,18 +246,14 @@ const ClientCard = ({ client, index }) => {
   );
 };
 
-/* ============================================================
-   CLIENTS SECTION
-============================================================ */
+/* CLIENTS SECTION */
 
 const Clients = () => {
   const sliderRef = useRef(null);
   const animationRef = useRef(null);
   const isHovered = useRef(false);
 
-  /* ============================================================
-     AUTOMATIC HORIZONTAL SCROLL
-  ============================================================ */
+  /* AUTOMATIC HORIZONTAL SCROLL */
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -257,21 +262,24 @@ const Clients = () => {
 
     let lastTime = performance.now();
 
-    // Lower = slower
-    // Higher = faster
+    // Lower value = slower scrolling
+    // Higher value = faster scrolling
     const speed = 35;
 
     const autoScroll = (currentTime) => {
       const deltaTime = currentTime - lastTime;
       lastTime = currentTime;
 
-      // Pause while hovering
+      // Pause scrolling when the user hovers over the cards
       if (!isHovered.current) {
         slider.scrollLeft += (speed * deltaTime) / 1000;
       }
 
-      // Start again from beginning after reaching the end
-      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1) {
+      // Restart from the beginning when the last card is reached
+      if (
+        slider.scrollLeft + slider.clientWidth >=
+        slider.scrollWidth - 1
+      ) {
         slider.scrollLeft = 0;
       }
 
@@ -287,9 +295,7 @@ const Clients = () => {
     };
   }, []);
 
-  /* ============================================================
-     ARROW SCROLL
-  ============================================================ */
+  /* ARROW SCROLL */
 
   const scroll = (direction) => {
     if (!sliderRef.current) return;
@@ -303,9 +309,8 @@ const Clients = () => {
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
-        {/* =====================================================
-            SECTION HEADING
-        ====================================================== */}
+
+        {/* SECTION HEADING */}
 
         <div className="mb-10 text-center">
           <div className="mb-3 flex items-center justify-center gap-3">
@@ -332,11 +337,10 @@ const Clients = () => {
           </p>
         </div>
 
-        {/* =====================================================
-            CLIENT CAROUSEL
-        ====================================================== */}
+        {/* CLIENT CAROUSEL */}
 
         <div className="relative mx-auto max-w-[1200px]">
+
           {/* LEFT ARROW */}
 
           <button
@@ -369,9 +373,7 @@ const Clients = () => {
             <ChevronLeft size={21} strokeWidth={2} />
           </button>
 
-          {/* ==================================================
-              AUTO SCROLLING CARDS
-          =================================================== */}
+          {/* AUTO SCROLLING CARDS */}
 
           <div
             ref={sliderRef}
@@ -396,7 +398,7 @@ const Clients = () => {
             }}
           >
             {clients.map((client, index) => (
-              <ClientCard key={index} client={client} index={index} />
+              <ClientCard key={index} client={client} />
             ))}
           </div>
 
@@ -433,9 +435,7 @@ const Clients = () => {
           </button>
         </div>
 
-        {/* =====================================================
-            MOBILE INDICATOR
-        ====================================================== */}
+        {/* MOBILE INDICATOR */}
 
         <div className="mt-4 flex items-center justify-center gap-2 lg:hidden">
           <span className="h-1.5 w-8 rounded-full bg-[#20AFA7]" />
