@@ -276,10 +276,7 @@ const Clients = () => {
       }
 
       // Restart from the beginning when the last card is reached
-      if (
-        slider.scrollLeft + slider.clientWidth >=
-        slider.scrollWidth - 1
-      ) {
+      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1) {
         slider.scrollLeft = 0;
       }
 
@@ -307,9 +304,8 @@ const Clients = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[#F9FBFF] py-16 sm:py-20 lg:py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
-
         {/* SECTION HEADING */}
 
         <div className="mb-10 text-center">
@@ -340,7 +336,6 @@ const Clients = () => {
         {/* CLIENT CAROUSEL */}
 
         <div className="relative mx-auto max-w-[1200px]">
-
           {/* LEFT ARROW */}
 
           <button

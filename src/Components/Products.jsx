@@ -113,19 +113,6 @@ const Products = () => {
       <div className="absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-[#EEF0FF] blur-3xl" />
       <div className="absolute -bottom-28 -right-20 h-72 w-72 rounded-full bg-[#E8F8F5] blur-3xl" />
 
-      {/* Decorative Plus Signs */}
-      <span className="absolute left-5 top-16 text-4xl font-light text-[#E2E8F5]">
-        +
-      </span>
-
-      <span className="absolute right-10 top-20 text-3xl font-light text-[#E1E7F5]">
-        +
-      </span>
-
-      <span className="absolute bottom-24 left-10 text-5xl font-light text-[#E7EAF5]">
-        +
-      </span>
-
       {/* Main Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
         {/* Heading */}

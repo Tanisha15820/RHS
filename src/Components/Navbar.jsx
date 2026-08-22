@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 import HomeIcon from "@mui/icons-material/Home";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
@@ -11,19 +11,43 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-
-// Icons for Products dropdown
 import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
 import AirIcon from "@mui/icons-material/Air";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
+import { useLocation } from "react-router-dom";
+
 import logo from "../assets/images/compressed_rhs_logo.png";
 
-const Navbar = () => {
-  const [mobileMenu, setMobileMenu] = React.useState(false);
+// Shared link styles
+const ACTIVE_LINK = "bg-primary/10 text-primary-dark";
 
-  // Products dropdown state
-  const [productsOpen, setProductsOpen] = React.useState(false);
+const INACTIVE_LINK =
+  "text-gray-700 hover:bg-primary/5 hover:text-primary-dark";
+
+const MOBILE_INACTIVE = "text-gray-700 hover:bg-primary/5";
+
+const Navbar = () => {
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+
+  const { pathname } = useLocation();
+
+  // Products menu stays active on product pages
+  const isProducts =
+    pathname === "/urology" ||
+    pathname === "/general-surgery" ||
+    pathname.startsWith("/products");
+
+  const isUrology = pathname === "/urology";
+
+  const isGeneralSurgery = pathname === "/general-surgery";
+
+  // Close mobile menu
+  const closeMobileMenu = () => {
+    setMobileMenu(false);
+    setProductsOpen(false);
+  };
 
   return (
     <header className="w-full bg-background px-3 py-4 md:px-5">
@@ -53,7 +77,9 @@ const Navbar = () => {
           {/* HOME */}
           <a
             href="/"
-            className="group relative flex items-center gap-1.5 rounded-full bg-primary/5 px-3 py-3 text-[13px] font-semibold text-primary-dark transition-all duration-200 hover:bg-primary/10"
+            className={`flex items-center gap-1.5 rounded-full px-3 py-3 text-[13px] font-semibold transition-all duration-200 ${
+              pathname === "/" ? ACTIVE_LINK : INACTIVE_LINK
+            }`}
           >
             <span>Home</span>
           </a>
@@ -64,10 +90,12 @@ const Navbar = () => {
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
-            {/* Products Button */}
             <button
-              onClick={() => setProductsOpen(!productsOpen)}
-              className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
+              type="button"
+              onClick={() => setProductsOpen((prev) => !prev)}
+              className={`flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold transition-all duration-200 ${
+                isProducts ? ACTIVE_LINK : INACTIVE_LINK
+              }`}
             >
               <span>Products</span>
 
@@ -84,11 +112,10 @@ const Navbar = () => {
               <div className="absolute left-1/2 top-full z-50 w-[650px] -translate-x-1/2 pt-3">
                 <div className="rounded-2xl bg-white p-5 shadow-[0_15px_50px_rgba(0,0,0,0.12)] ring-1 ring-gray-100">
                   <div className="grid grid-cols-2 gap-6">
-                    {/* ================= CATEGORY 1 ================= */}
+                    {/* ================= GENERAL SURGERY ================= */}
                     <div>
-                      {/* Category Heading */}
                       <div className="mb-4 flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 text-primary">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                           <MonitorHeartIcon sx={{ fontSize: 22 }} />
                         </div>
 
@@ -102,13 +129,13 @@ const Navbar = () => {
                         </h3>
                       </div>
 
-                      {/* Products */}
                       <div className="space-y-1">
                         <a
-                          href=""
-                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary-dark"
+                          href="/general-surgery"
+                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary"
                         >
                           <span>Bipolar Plasma Generator</span>
+
                           <ChevronRightIcon
                             sx={{ fontSize: 17 }}
                             className="opacity-50 transition-transform group-hover:translate-x-1"
@@ -116,10 +143,11 @@ const Navbar = () => {
                         </a>
 
                         <a
-                          href=""
-                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary-dark"
+                          href="/general-surgery"
+                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary"
                         >
                           <span>Diode Laser</span>
+
                           <ChevronRightIcon
                             sx={{ fontSize: 17 }}
                             className="opacity-50 transition-transform group-hover:translate-x-1"
@@ -128,26 +156,29 @@ const Navbar = () => {
                       </div>
                     </div>
 
-                    {/* ================= CATEGORY 2 ================= */}
+                    {/* ================= UROLOGY ================= */}
                     <div>
-                      {/* Category Heading */}
                       <div className="mb-4 flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-50 text-purple-500">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                           <AirIcon sx={{ fontSize: 22 }} />
                         </div>
 
-                        <h3 className="text-sm font-bold text-gray-800">
-                          Urology
+                        <h3>
+                          <a
+                            href="/urology"
+                            className="text-sm font-bold text-gray-800 transition-colors hover:text-primary"
+                          >
+                            Urology
+                          </a>
                         </h3>
                       </div>
 
-                      {/* Products */}
                       <div className="space-y-1">
                         <a
-                          href="/products/nebulizer-machines"
-                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-purple-50 hover:text-purple-600"
+                          href="/urology"
+                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary"
                         >
-                          <span>Bipolar (Embed & Simai)</span>
+                          <span>Surgical Laser</span>
 
                           <ChevronRightIcon
                             sx={{ fontSize: 17 }}
@@ -156,10 +187,10 @@ const Navbar = () => {
                         </a>
 
                         <a
-                          href=""
-                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-purple-50 hover:text-purple-600"
+                          href="/urology"
+                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary"
                         >
-                          <span>Cyber Blade</span>
+                          <span>Urodynamic System & Uroflowmetry</span>
 
                           <ChevronRightIcon
                             sx={{ fontSize: 17 }}
@@ -168,10 +199,22 @@ const Navbar = () => {
                         </a>
 
                         <a
-                          href=""
-                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-purple-50 hover:text-purple-600"
+                          href="/urology"
+                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary"
                         >
-                          <span>Bladder Scanner</span>
+                          <span>ESWL Lithotripsy</span>
+
+                          <ChevronRightIcon
+                            sx={{ fontSize: 17 }}
+                            className="opacity-50 transition-transform group-hover:translate-x-1"
+                          />
+                        </a>
+
+                        <a
+                          href="/urology"
+                          className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-[13px] text-gray-600 transition-all hover:bg-primary/5 hover:text-primary"
+                        >
+                          <span>Endo Urology UMD Endoscopy</span>
 
                           <ChevronRightIcon
                             sx={{ fontSize: 17 }}
@@ -186,77 +229,72 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* CATALOGUES */}
+          {/* ================= BLOGS ================= */}
           <a
             href="/blogs"
-            className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
+            className={`flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold transition-all duration-200 ${
+              pathname === "/blogs" ? ACTIVE_LINK : INACTIVE_LINK
+            }`}
           >
             <span>Blogs</span>
           </a>
 
-          {/* SERVICES */}
+          {/* ================= SERVICES ================= */}
           <a
-            href=""
-            className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
+            href="/services"
+            className={`flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold transition-all duration-200 ${INACTIVE_LINK}`}
           >
             <span>Services</span>
+
             <KeyboardArrowDownIcon sx={{ fontSize: 15 }} />
           </a>
 
-          {/* CLIENTS */}
+          {/* ================= CLIENTS ================= */}
           <a
-            href=""
-            className="flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
+            href="/patients"
+            className={`flex items-center gap-1 rounded-full px-3 py-3 text-[13px] font-semibold transition-all duration-200 ${INACTIVE_LINK}`}
           >
             <span>Clients</span>
+
             <KeyboardArrowDownIcon sx={{ fontSize: 15 }} />
           </a>
 
-          {/* CONTACT */}
+          {/* ================= CONTACT ================= */}
           <a
-            href=""
-            className="rounded-full px-3 py-3 text-[13px] font-semibold text-gray-700 transition-all duration-200 hover:bg-primary/5 hover:text-primary-dark"
+            href="/contact"
+            className={`rounded-full px-3 py-3 text-[13px] font-semibold transition-all duration-200 ${INACTIVE_LINK}`}
           >
             Contact Us
           </a>
         </nav>
 
-        {/* ================= RIGHT SIDE ================= */}
+        {/* ================= DESKTOP RIGHT SIDE ================= */}
         <div className="hidden items-center gap-2.5 lg:flex">
-          {/* Appointment */}
-          <button className="flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary-dark px-6 py-3 text-[13px] font-semibold text-white shadow-lg shadow-primary/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl">
+          {/* GET A QUOTE */}
+          <button
+            type="button"
+            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary-dark px-6 py-3 text-[13px] font-semibold text-white shadow-lg shadow-primary/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+          >
             <CalendarMonthIcon sx={{ fontSize: 16 }} />
-
-            <span>Book an Appointment</span>
+            <span>Get a Quote</span>
           </button>
 
-          {/* Search */}
+          {/* SEARCH */}
           <button
+            type="button"
             className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/5 text-primary-dark transition-all duration-200 hover:bg-primary/10"
             aria-label="Search"
           >
             <SearchIcon sx={{ fontSize: 22 }} />
           </button>
-
-          {/* Menu */}
-          <button
-            onClick={() => setMobileMenu(!mobileMenu)}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/5 text-primary-dark transition-all duration-200 hover:bg-primary/10"
-            aria-label="Menu"
-          >
-            {mobileMenu ? (
-              <CloseIcon sx={{ fontSize: 22 }} />
-            ) : (
-              <MenuIcon sx={{ fontSize: 22 }} />
-            )}
-          </button>
         </div>
 
-        {/* ================= MOBILE BUTTON ================= */}
+        {/* ================= MOBILE TOGGLE ================= */}
         <button
-          onClick={() => setMobileMenu(!mobileMenu)}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/5 text-primary-dark lg:hidden"
-          aria-label="Open menu"
+          type="button"
+          onClick={() => setMobileMenu((prev) => !prev)}
+          className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/5 text-primary-dark transition-all duration-200 hover:bg-primary/10 lg:hidden"
+          aria-label={mobileMenu ? "Close menu" : "Open menu"}
         >
           {mobileMenu ? (
             <CloseIcon sx={{ fontSize: 24 }} />
@@ -270,20 +308,26 @@ const Navbar = () => {
       {mobileMenu && (
         <div className="mx-auto mt-3 max-w-7xl rounded-2xl bg-white p-4 shadow-xl ring-1 ring-primary/10 lg:hidden">
           <nav className="flex flex-col gap-1">
-            {/* Home */}
+            {/* ================= HOME ================= */}
             <a
               href="/"
-              className="flex items-center gap-2 rounded-xl bg-primary/5 px-4 py-3.5 text-base font-semibold text-primary-dark"
+              onClick={closeMobileMenu}
+              className={`flex items-center gap-2 rounded-xl px-4 py-3.5 text-base font-semibold ${
+                pathname === "/" ? ACTIVE_LINK : MOBILE_INACTIVE
+              }`}
             >
               <HomeIcon sx={{ fontSize: 20 }} />
               Home
             </a>
 
-            {/* ================= MOBILE PRODUCTS ================= */}
+            {/* ================= PRODUCTS ================= */}
             <div>
               <button
-                onClick={() => setProductsOpen(!productsOpen)}
-                className="flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
+                type="button"
+                onClick={() => setProductsOpen((prev) => !prev)}
+                className={`flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium ${
+                  isProducts ? ACTIVE_LINK : MOBILE_INACTIVE
+                }`}
               >
                 <span className="flex items-center gap-2">
                   <MedicalServicesIcon sx={{ fontSize: 20 }} />
@@ -292,132 +336,200 @@ const Navbar = () => {
 
                 <KeyboardArrowDownIcon
                   sx={{ fontSize: 20 }}
-                  className={`transition-transform ${
+                  className={`transition-transform duration-200 ${
                     productsOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
-              {/* Mobile Product Categories */}
+              {/* ================= PRODUCT SUBMENU ================= */}
               {productsOpen && (
-                <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary/10 pl-3">
-                  {/* General Surgery */}
-                  <div className="py-2">
-                    <p className="mb-1 flex items-center gap-2 px-3 text-sm font-bold text-gray-800">
+                <div className="ml-4 mt-1 space-y-2 border-l-2 border-primary/10 pl-3">
+                  {/* ================= GENERAL SURGERY ================= */}
+                  <div className="rounded-xl bg-gray-50/70 py-2">
+                    <a
+                      href="/general-surgery"
+                      onClick={closeMobileMenu}
+                      className={`mb-1 flex items-center gap-2 px-3 py-2 text-sm font-bold ${
+                        isGeneralSurgery
+                          ? "text-primary"
+                          : "text-gray-800 hover:text-primary"
+                      }`}
+                    >
                       <MonitorHeartIcon
                         sx={{ fontSize: 18 }}
                         className="text-primary"
                       />
-                      <a
-                        href="/general-surgery"
-                        className="transition-colors hover:text-primary"
-                      >
-                        General Surgery
-                      </a>
-                    </p>
+                      General Surgery
+                    </a>
 
                     <a
-                      href=""
-                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5"
+                      href="/general-surgery"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
                     >
                       Bipolar Plasma Generator
                     </a>
 
                     <a
-                      href=""
-                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5"
+                      href="/general-surgery"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
                     >
                       Diode Laser
                     </a>
                   </div>
 
-                  {/* Urology */}
-                  <div className="py-2">
-                    <p className="mb-1 flex items-center gap-2 px-3 text-sm font-bold text-gray-800">
-                      <AirIcon
-                        sx={{ fontSize: 18 }}
-                        className="text-purple-500"
-                      />
+                  {/* ================= UROLOGY ================= */}
+                  <div className="rounded-xl bg-gray-50/70 py-2">
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className={`mb-1 flex items-center gap-2 px-3 py-2 text-sm font-bold ${
+                        isUrology
+                          ? "text-primary"
+                          : "text-gray-800 hover:text-primary"
+                      }`}
+                    >
+                      <AirIcon sx={{ fontSize: 18 }} className="text-primary" />
                       Urology
-                    </p>
-
-                    <a
-                      href=""
-                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-purple-50"
-                    >
-                      Bipolar (Embed & Simai)
                     </a>
 
                     <a
-                      href=""
-                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-purple-50"
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
                     >
-                      Cyber Blade
+                      Surgical Laser
                     </a>
 
                     <a
-                      href=""
-                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-purple-50"
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
                     >
-                      Bladder Scanner
+                      Urodynamic System & Uroflowmetry
+                    </a>
+
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
+                    >
+                      ESWL Extracorporeal Shock Wave Lithotripsy
+                    </a>
+
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
+                    >
+                      Endo Urology UMD Endoscopy
+                    </a>
+
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
+                    >
+                      Endo-Vision Set
+                    </a>
+
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
+                    >
+                      Flexible Video Ureterorenoscope & Cystoscope
+                    </a>
+
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
+                    >
+                      Bipolar (Emed & Simai)
+                    </a>
+
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-primary/5 hover:text-primary"
+                    >
+                      Rocamed Consumables
+                    </a>
+
+                    <a
+                      href="/urology"
+                      onClick={closeMobileMenu}
+                      className="mt-1 block px-3 py-2 text-sm font-semibold text-primary hover:text-primary-dark"
+                    >
+                      View All Urology Products →
                     </a>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Services */}
+            {/* ================= BLOGS ================= */}
+            <a
+              href="/blogs"
+              onClick={closeMobileMenu}
+              className={`flex items-center gap-2 rounded-xl px-4 py-3.5 text-base font-medium ${
+                pathname === "/blogs" ? ACTIVE_LINK : MOBILE_INACTIVE
+              }`}
+            >
+              <ArticleIcon sx={{ fontSize: 20 }} />
+              Blogs
+            </a>
+
+            {/* ================= SERVICES ================= */}
             <a
               href="/services"
-              className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
+              onClick={closeMobileMenu}
+              className="flex items-center gap-2 rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
             >
-              <span className="flex items-center gap-2">
-                <HealthAndSafetyIcon sx={{ fontSize: 20 }} />
-                Services
-              </span>
-
-              <KeyboardArrowDownIcon sx={{ fontSize: 20 }} />
+              <HealthAndSafetyIcon sx={{ fontSize: 20 }} />
+              Services
             </a>
 
-            {/* Clients */}
+            {/* ================= CLIENTS ================= */}
             <a
               href="/patients"
-              className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
+              onClick={closeMobileMenu}
+              className="flex items-center gap-2 rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
             >
-              <span className="flex items-center gap-2">
-                <PeopleIcon sx={{ fontSize: 20 }} />
-                Clients
-              </span>
-
-              <KeyboardArrowDownIcon sx={{ fontSize: 20 }} />
+              <PeopleIcon sx={{ fontSize: 20 }} />
+              Clients
             </a>
 
-            {/* Catalogues */}
+            {/* ================= CATALOGUES ================= */}
             <a
               href="/resources"
-              className="flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
+              onClick={closeMobileMenu}
+              className="flex items-center gap-2 rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
             >
-              <span className="flex items-center gap-2">
-                <ArticleIcon sx={{ fontSize: 20 }} />
-                Catalogues
-              </span>
-
-              <KeyboardArrowDownIcon sx={{ fontSize: 20 }} />
+              <ArticleIcon sx={{ fontSize: 20 }} />
+              Catalogues
             </a>
 
-            {/* Contact */}
+            {/* ================= CONTACT ================= */}
             <a
               href="/contact"
+              onClick={closeMobileMenu}
               className="flex items-center gap-2 rounded-xl px-4 py-3.5 text-base font-medium text-gray-700 hover:bg-primary/5"
             >
               <ContactPhoneIcon sx={{ fontSize: 20 }} />
               Contact Us
             </a>
 
-            {/* Appointment */}
-            <button className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-primary-dark px-5 py-3.5 text-base font-semibold text-white shadow-md shadow-primary/30">
+            {/* ================= GET A QUOTE ================= */}
+            <button
+              type="button"
+              className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-primary-dark px-5 py-3.5 text-base font-semibold text-white shadow-md shadow-primary/30"
+            >
               <CalendarMonthIcon sx={{ fontSize: 20 }} />
-              Book an Appointment
+              Get a Quote
             </button>
           </nav>
         </div>

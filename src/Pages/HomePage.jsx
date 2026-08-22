@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
 // import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalHospitalOutlinedIcon from "@mui/icons-material/LocalHospitalOutlined";
@@ -6,16 +8,56 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlinedIcon from "@mui/icons-material/PlayCircleOutlined";
+
 import homeBanner from "../assets/images/compressed_home_banner.png";
+
 import Products from "../Components/Products";
 import WhyChooseUs from "../Components/WhyChooseUs";
 import TestimonialSection from "../Components/TestimonialSection";
 import FAQ from "../Components/FAQ";
 import Clients from "../Components/Clients";
+import SEO from "../Components/SEO";
+
+import { ORGANIZATION_SCHEMA } from "../config/seo";
 
 const HomePage = () => {
+  // Numbers for the four statistics cards
+  const [counts, setCounts] = useState({
+    categories: 0,
+    specialties: 0,
+    products: 0,
+    support: 0,
+  });
+
+  // Start number animation when the page loads
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounts((prev) => ({
+        categories: prev.categories < 50 ? prev.categories + 1 : 50,
+
+        specialties: prev.specialties < 10 ? prev.specialties + 1 : 10,
+
+        products: prev.products < 100 ? prev.products + 1 : 100,
+
+        support: prev.support < 24 ? prev.support + 1 : 24,
+      }));
+    }, 30);
+
+    // Stop the timer when the component is removed
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="w-full">
+      <SEO
+        title="Medical Equipment & Machine Rental for Hospitals & Doctors"
+        description="Reinforce Healthcare Services provides high-grade medical equipment, urology devices, and hospital machinery on rent for healthcare professionals and medical centers."
+        keywords="medical machine rental for hospitals, medical equipment rental for doctors, urology equipment leasing, healthcare machinery rental, hospital equipment provider"
+        canonical="/"
+        jsonLd={ORGANIZATION_SCHEMA}
+      />
+
+      {/* ================= HERO SECTION ================= */}
       <section className="relative min-h-[500px] w-full overflow-hidden bg-primary/5">
         <div
           className="absolute inset-0 animate-zoom-slow bg-cover bg-center bg-no-repeat"
@@ -57,7 +99,7 @@ const HomePage = () => {
               professionals across multiple specialties.
             </p>
 
-            {/*  FEATURES  */}
+            {/* FEATURES */}
             <div className="mt-7 grid max-w-[500px] grid-cols-2 gap-3 sm:grid-cols-4">
               {/* Feature 1 */}
               <div className="flex flex-col items-center rounded-xl bg-white/80 px-3 py-3 text-center shadow-sm backdrop-blur-sm">
@@ -116,7 +158,7 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* ================= BUTTONS ================= */}
+            {/* BUTTONS */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               {/* Appointment Button */}
               <button
@@ -139,59 +181,81 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* STATS CARD */}
+        {/* ================= STATS CARD ================= */}
         <div className="relative z-20 mx-auto mt-6 w-[92%] max-w-4xl md:absolute md:bottom-3 md:left-1/2 md:mt-0 md:-translate-x-1/2">
           <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-white/70 bg-white/90 shadow-xl backdrop-blur-md md:grid-cols-4">
+            {/* Product Categories */}
             <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-4 md:border-b-0 md:border-r">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                 <GroupsOutlinedIcon className="text-primary" />
               </div>
 
               <div>
-                <p className="text-lg font-bold text-primary-dark">50+</p>
+                <p className="text-lg font-bold text-primary-dark">
+                  {counts.categories}+
+                </p>
+
                 <p className="text-xs text-slate-500">Product Categories</p>
               </div>
             </div>
 
+            {/* Medical Specialties */}
             <div className="flex items-center gap-3 border-b border-slate-200 px-5 py-4 md:border-b-0 md:border-r">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                 <LocalHospitalOutlinedIcon className="text-primary" />
               </div>
 
               <div>
-                <p className="text-lg font-bold text-primary-dark">10+</p>
+                <p className="text-lg font-bold text-primary-dark">
+                  {counts.specialties}+
+                </p>
+
                 <p className="text-xs text-slate-500">Medical Specialties</p>
               </div>
             </div>
 
+            {/* Quality Products */}
             <div className="flex items-center gap-3 border-r border-slate-200 px-5 py-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                 <GroupsOutlinedIcon className="text-primary" />
               </div>
 
               <div>
-                <p className="text-lg font-bold text-primary-dark">100+</p>
+                <p className="text-lg font-bold text-primary-dark">
+                  {counts.products}+
+                </p>
+
                 <p className="text-xs text-slate-500">Quality Products</p>
               </div>
             </div>
 
+            {/* Expert Support */}
             <div className="flex items-center gap-3 px-5 py-4">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                 <CategoryOutlinedIcon className="text-primary" />
               </div>
 
               <div>
-                <p className="text-lg font-bold text-primary-dark">24/7</p>
+                <p className="text-lg font-bold text-primary-dark">
+                  {counts.support}/7
+                </p>
+
                 <p className="text-xs text-slate-500">Expert Support</p>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ================= OTHER SECTIONS ================= */}
       <Products />
+
       <WhyChooseUs />
+
       <TestimonialSection />
+
       <FAQ />
+
       <Clients />
     </div>
   );

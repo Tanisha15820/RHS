@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import Homepage from "./Pages/HomePage";
-import GeneralSurgery from "./Pages/GeneralSurgery";
+import Urology from "./Components/Products/Urology";
 import Blogs from "./Pages/Blogs";
+import MachinePage from "./Pages/MachinePage";
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/general-surgery" element={<GeneralSurgery />} />
+          <Route path="/urology" element={<Urology />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/machine" element={<MachinePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

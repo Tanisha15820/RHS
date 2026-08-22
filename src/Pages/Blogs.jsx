@@ -1,17 +1,8 @@
-import React from "react";
-import {
-  ArrowRight,
-  Bookmark,
-  CalendarDays,
-  Clock3,
-  PenLine,
-  Plus,
-} from "lucide-react";
-
+import { Bookmark, Plus } from "lucide-react";
 import blogBannerBg from "../assets/images/blogs.png";
-import blogImg1 from "../assets/images/blog_1.png";
+import blogImg1 from "../assets/images/blog_3.png";
 import blogImg2 from "../assets/images/blog_2.png";
-import blogImg3 from "../assets/images/blog_3.png";
+import blogImg3 from "../assets/images/blog_1.png";
 import blogImg4 from "../assets/images/blog_4.png";
 
 const Blog = () => {
@@ -62,27 +53,30 @@ const Blog = () => {
     <div className="min-h-screen bg-white">
       {/* Hero section */}
       <section
-        className="relative overflow-hidden"
+        className="relative h-[260px] w-full overflow-hidden md:h-[280px]"
         style={{
           backgroundImage: `url(${blogBannerBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="relative mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-            Our{" "}
-            <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-              Blog
-            </span>
-          </h1>
+        <div className="relative mx-auto flex h-full max-w-7xl items-center px-5 md:px-8">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+              Our{" "}
+              <span className="bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+                Blog
+              </span>
+            </h1>
 
-          <div className="mt-3 h-[2px] w-10 bg-primary" />
+            <div className="mt-3 h-[2px] w-10 bg-primary" />
 
-          <p className="mt-4 max-w-md text-xs leading-5 text-slate-500 md:text-sm">
-            Insights, guides and updates from the world of surgical equipment
-            and hospital innovation.
-          </p>
+            <p className="mt-4 max-w-md text-xs leading-5 text-slate-500 md:text-sm">
+              Insights, guides and updates from the world of surgical equipment
+              and hospital innovation.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -104,25 +98,29 @@ const Blog = () => {
                   group
                   relative
                   grid
-                  min-h-[285px]
+                  min-h-[340px]
+                  cursor-pointer
                   overflow-hidden
-                  rounded-[18px]
+                  rounded-[22px]
                   border
-                  border-[#dbeaf2]
+                  border-[#e2edf4]
                   bg-white
-                  shadow-[0_8px_30px_rgba(15,23,42,0.08)]
+                  shadow-[0_10px_35px_rgba(15,23,42,0.07)]
                   transition-all
                   duration-500
-                  hover:shadow-[0_15px_40px_rgba(15,23,42,0.13)]
-                  md:grid-cols-[48%_52%]
-                  lg:min-h-[290px]
+                  ease-out
+                  hover:-translate-y-1.5
+                  hover:border-primary/25
+                  hover:shadow-[0_22px_50px_rgba(25,168,232,0.15)]
+                  md:grid-cols-[46%_54%]
+                  lg:min-h-[360px]
                 "
               >
                 {/* Blog image */}
                 <div
                   className="
                     relative
-                    h-[230px]
+                    h-[280px]
                     overflow-hidden
                     bg-slate-100
                     md:h-full
@@ -140,8 +138,7 @@ const Blog = () => {
                       transition-transform
                       duration-700
                       ease-out
-                      group-hover:scale-[1.04]
-                    "
+                      group-hover:scale-[1.04]"
                   />
 
                   {/* Image overlay */}
@@ -149,10 +146,10 @@ const Blog = () => {
                     className="
                       absolute
                       inset-0
-                      bg-gradient-to-r
-                      from-black/5
+                      bg-gradient-to-t
+                      from-black/20
                       via-transparent
-                      to-white/10
+                      to-transparent
                     "
                   />
 
@@ -196,21 +193,25 @@ const Blog = () => {
                       gap-2
                       rounded-full
                       bg-white/95
-                      px-3
+                      px-3.5
                       py-2
-                      text-[9px]
+                      text-[10px]
                       font-bold
                       uppercase
-                      tracking-wide
+                      tracking-wider
                       text-primary
-                      shadow-[0_4px_15px_rgba(15,23,42,0.10)]
+                      shadow-[0_4px_15px_rgba(15,23,42,0.12)]
                       backdrop-blur-sm
+                      transition-transform
+                      duration-300
+                      group-hover:scale-105
                       md:left-5
                       md:top-5
                     "
                   >
-                    <span className="flex h-4 w-4 items-center justify-center rounded-full bg-primary/10">
-                      <PenLine className="h-2.5 w-2.5 text-primary" />
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                     </span>
 
                     {post.tag}
@@ -222,16 +223,16 @@ const Blog = () => {
                   className="
                     relative
                     flex
-                    min-h-[280px]
+                    min-h-[340px]
                     flex-col
                     justify-center
                     overflow-hidden
                     px-6
-                    py-7
-                    md:min-h-[290px]
-                    md:px-8
-                    lg:px-10
-                    lg:py-8
+                    py-8
+                    md:min-h-[360px]
+                    md:px-9
+                    lg:px-11
+                    lg:py-9
                   "
                 >
                   {/* Decorative background */}
@@ -308,42 +309,17 @@ const Blog = () => {
                       text-primary
                       transition-all
                       duration-300
-                      hover:scale-105
+                      hover:rotate-12
+                      hover:scale-110
                       hover:bg-primary
                       hover:text-white
+                      hover:shadow-[0_6px_18px_rgba(25,168,232,0.35)]
                       md:right-6
                       md:top-6
                     "
                   >
                     <Bookmark className="h-[18px] w-[18px]" strokeWidth={1.8} />
                   </button>
-
-                  {/* Date and reading time */}
-                  <div
-                    className="
-                      relative
-                      z-10
-                      flex
-                      items-center
-                      gap-3
-                      text-[9px]
-                      font-semibold
-                      text-slate-400
-                      md:text-[10px]
-                    "
-                  >
-                    <span className="flex items-center gap-1.5">
-                      <CalendarDays className="h-3 w-3 text-primary" />
-                      {post.date}
-                    </span>
-
-                    <span className="h-1 w-1 rounded-full bg-slate-300" />
-
-                    <span className="flex items-center gap-1.5">
-                      <Clock3 className="h-3 w-3 text-primary" />
-                      {post.readTime}
-                    </span>
-                  </div>
 
                   {/* Blog title */}
                   <h2
@@ -355,18 +331,22 @@ const Blog = () => {
                       pr-10
                       text-xl
                       font-bold
-                      leading-[1.35]
-                      text-slate-800
+                      leading-[1.3]
+                      text-slate-900
                       transition-colors
                       duration-300
                       group-hover:text-primary
                       sm:text-2xl
-                      md:text-[22px]
-                      lg:text-[23px]
+                      md:text-[24px]
+                      lg:text-[26px]
                     "
                   >
                     {post.title}
                   </h2>
+
+                  {/* Accent divider */}
+
+                  <div className="relative z-10 mt-3 h-[3px] w-10 rounded-full bg-gradient-to-r from-primary to-primary-dark" />
 
                   {/* Blog description */}
                   <p
@@ -374,47 +354,16 @@ const Blog = () => {
                       relative
                       z-10
                       mt-3
-                      max-w-[500px]
-                      text-[10px]
-                      leading-[1.75]
-                      text-slate-500
-                      sm:text-[11px]
-                      md:text-[11px]
+                      max-w-[520px]
+                      text-xs
+                      leading-[1.8]
+                      text-slate-600
+                      line-clamp-3
+                      sm:text-[13px]
                     "
                   >
                     {post.excerpt}
                   </p>
-
-                  {/* Read more */}
-                  <button
-                    className="
-                      relative
-                      z-10
-                      mt-4
-                      flex
-                      w-fit
-                      items-center
-                      gap-2
-                      text-[11px]
-                      font-bold
-                      text-primary
-                      transition-all
-                      duration-300
-                      hover:gap-3
-                    "
-                  >
-                    <span>Read More</span>
-
-                    <ArrowRight
-                      className="
-                        h-4
-                        w-4
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
-                    />
-                  </button>
                 </div>
               </article>
             </div>

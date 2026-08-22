@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import faqImage from "../assets/images/faq_image.png";
 
 // MUI Icons
-import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import PersonIcon from "@mui/icons-material/Person";
@@ -16,17 +15,25 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
-  // Controls the entrance animation of FAQ cards
-  const [showFAQs, setShowFAQs] = useState(false);
+  // =====================================================
+  // ANIMATION VARIANTS
+  // =====================================================
 
-  // Start FAQ animation after component loads
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowFAQs(true);
-    }, 200);
+  const listVariants = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.09, delayChildren: 0.1 },
+    },
+  };
 
-    return () => clearTimeout(timer);
-  }, []);
+  const itemVariants = {
+    hidden: { opacity: 0, x: 70 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.55, ease: "easeOut" },
+    },
+  };
 
   // =====================================================
   // FAQ DATA
@@ -89,10 +96,8 @@ const FAQ = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#F9FBFF] py-12 sm:py-14 lg:py-16">
-      {/* =====================================================
-          BACKGROUND DECORATIONS
-      ====================================================== */}
+    <section className="relative overflow-hidden bg-white py-12 sm:py-14 lg:py-16">
+      {/* BACKGROUND DECORATIONS */}
 
       <div className="absolute -left-24 -top-24 h-56 w-56 rounded-full bg-[#E7F5FF]/70 blur-3xl" />
 
@@ -104,15 +109,15 @@ const FAQ = () => {
           DECORATIVE PLUS SIGNS
       ====================================================== */}
 
-      <span className="absolute left-5 top-16 text-4xl font-light text-[#E2E8F5]">
+      <span className="animate-float-y absolute left-5 top-16 text-4xl font-light text-[#E2E8F5]">
         +
       </span>
 
-      <span className="absolute right-10 top-20 text-3xl font-light text-[#E1E7F5]">
+      <span className="animate-sway-x absolute right-10 top-20 text-3xl font-light text-[#E1E7F5]">
         +
       </span>
 
-      <span className="absolute bottom-20 left-10 text-5xl font-light text-[#E7EAF5]">
+      <span className="animate-float-y absolute bottom-20 left-10 text-5xl font-light text-[#E7EAF5] [animation-delay:1.2s]">
         +
       </span>
 
@@ -127,7 +132,13 @@ const FAQ = () => {
             SAME STYLE AS PRODUCTS SECTION
         ====================================================== */}
 
-        <div className="mb-8 text-center">
+        <motion.div
+          className="mb-8 text-center"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           {/* Small Heading */}
 
           <div className="mb-3 flex items-center justify-center gap-3">
@@ -156,7 +167,7 @@ const FAQ = () => {
             <br className="hidden sm:block" />
             services and support.
           </p>
-        </div>
+        </motion.div>
 
         {/* =====================================================
             MAIN FAQ CONTENT
@@ -167,7 +178,7 @@ const FAQ = () => {
               LEFT SIDE
           ================================================== */}
 
-          <div
+          <motion.div
             className="
               group
               relative
@@ -188,6 +199,10 @@ const FAQ = () => {
               hover:shadow-[0_18px_45px_rgba(55,75,110,0.12)]
               sm:p-6
             "
+            initial={{ opacity: 0, x: -70 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             {/* Soft Background Glow */}
 
@@ -215,82 +230,80 @@ const FAQ = () => {
                 CUTOUT IMAGE
             ================================================== */}
 
-            <img
-              src={faqImage}
-              alt="Healthcare Equipment"
-              className="
-                absolute
-                bottom-0
-                left-1/2
-                w-[88%]
-                max-w-[340px]
-                -translate-x-1/2
-                object-contain
+            <div className="absolute bottom-0 left-1/2 w-[88%] max-w-[340px] -translate-x-1/2">
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <img
+                  src={faqImage}
+                  alt="Healthcare Equipment"
+                  className="
+                    w-full
+                    object-contain
 
-                transition-all
-                duration-700
-                ease-out
+                    transition-transform
+                    duration-700
+                    ease-out
 
-                group-hover:-translate-y-5
-                group-hover:scale-110
-              "
-            />
-          </div>
+                    group-hover:-translate-y-5
+                    group-hover:scale-110
+                  "
+                />
+              </motion.div>
+            </div>
+          </motion.div>
 
           {/* =================================================
               RIGHT FAQ LIST
           ================================================== */}
 
-          <div className="flex flex-col gap-2.5">
+          <motion.div
+            className="flex flex-col gap-2.5"
+            variants={listVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+          >
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
 
               return (
-                <div
-                  key={index}
-                  // =================================================
-                  // ANIMATION
-                  // Each FAQ comes from RIGHT one after another
-                  // =================================================
+                <motion.div key={index} variants={itemVariants}>
+                  <div
+                    className={`
+                      group
+                      overflow-hidden
+                      rounded-xl
+                      border
+                      bg-white
 
-                  style={{
-                    opacity: showFAQs ? 1 : 0,
+                      ${
+                        isOpen
+                          ? "border-primary/20 shadow-[0_8px_25px_rgba(25,168,232,0.10)]"
+                          : "border-[#E6ECF4] shadow-[0_4px_15px_rgba(55,75,110,0.05)]"
+                      }
 
-                    transform: showFAQs ? "translateX(0)" : "translateX(70px)",
+                      transition-all
+                      duration-300
 
-                    transition: "opacity 0.6s ease, transform 0.6s ease",
-
-                    transitionDelay: `${index * 120}ms`,
-                  }}
-                  className={`
-                    group
-                    overflow-hidden
-                    rounded-xl
-                    border
-                    bg-white
-
-                    ${
-                      isOpen
-                        ? "border-primary/20 shadow-[0_8px_25px_rgba(25,168,232,0.10)]"
-                        : "border-[#E6ECF4] shadow-[0_4px_15px_rgba(55,75,110,0.05)]"
-                    }
-
-                    transition-all
-                    duration-300
-
-                    hover:-translate-x-1
-                    hover:border-primary/20
-                    hover:shadow-[0_10px_25px_rgba(25,168,232,0.10)]
-                  `}
-                >
-                  {/* =================================================
+                      hover:-translate-x-1
+                      hover:border-primary/20
+                      hover:shadow-[0_10px_25px_rgba(25,168,232,0.10)]
+                    `}
+                  >
+                    {/* =================================================
                       QUESTION BUTTON
                   ================================================== */}
 
-                  <button
-                    type="button"
-                    onClick={() => handleFAQClick(index)}
-                    className="
+                    <button
+                      type="button"
+                      onClick={() => handleFAQClick(index)}
+                      className="
                       flex
                       w-full
                       items-center
@@ -299,11 +312,11 @@ const FAQ = () => {
                       py-3
                       text-left
                     "
-                  >
-                    {/* Icon */}
+                    >
+                      {/* Icon */}
 
-                    <div
-                      className={`
+                      <div
+                        className={`
                         flex
                         h-9
                         w-9
@@ -322,16 +335,16 @@ const FAQ = () => {
 
                         group-hover:scale-105
                       `}
-                    >
-                      {React.cloneElement(faq.icon, {
-                        fontSize: "small",
-                      })}
-                    </div>
+                      >
+                        {React.cloneElement(faq.icon, {
+                          fontSize: "small",
+                        })}
+                      </div>
 
-                    {/* Question */}
+                      {/* Question */}
 
-                    <span
-                      className="
+                      <span
+                        className="
                         flex-1
                         text-xs
                         font-semibold
@@ -341,15 +354,15 @@ const FAQ = () => {
                         group-hover:text-primary
                         sm:text-sm
                       "
-                    >
-                      {faq.question}
-                    </span>
+                      >
+                        {faq.question}
+                      </span>
 
-                    {/* Arrow */}
+                      {/* Arrow */}
 
-                    <KeyboardArrowDownIcon
-                      fontSize="small"
-                      className={`
+                      <KeyboardArrowDownIcon
+                        fontSize="small"
+                        className={`
                         text-[#7C879C]
                         transition-all
                         duration-300
@@ -358,32 +371,36 @@ const FAQ = () => {
 
                         ${isOpen ? "rotate-180 text-primary" : ""}
                       `}
-                    />
-                  </button>
+                      />
+                    </button>
 
-                  {/* =================================================
+                    {/* =================================================
                       ANSWER
                   ================================================== */}
 
-                  {isOpen && (
-                    <div
-                      className="
-                        animate-fade-in
-                        px-5
-                        pb-4
-                        pl-[64px]
-                        pr-5
-                      "
-                    >
-                      <p className="text-xs leading-5 text-[#7C879C] sm:text-sm sm:leading-6">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  )}
-                </div>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          key="answer"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-5 pb-4 pl-[64px] pr-5">
+                            <p className="text-xs leading-5 text-[#7C879C] sm:text-sm sm:leading-6">
+                              {faq.answer}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
